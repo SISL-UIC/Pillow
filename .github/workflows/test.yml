@@ -143,6 +143,7 @@ jobs:
     - name: Success
       run: echo Test Successful
     timeout-minutes: 15
+    if: ${{ !cancelled() }}
 'on':
   push:
     branches:
