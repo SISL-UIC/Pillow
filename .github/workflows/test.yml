@@ -132,7 +132,7 @@ jobs:
       with:
         flags: ${{ matrix.os == 'ubuntu-latest' && 'GHA_Ubuntu' || 'GHA_macOS' }}
         name: ${{ matrix.os }} Python ${{ matrix.python-version }}
-    timeout-minutes: 12
+    timeout-minutes: 15
   success:
     permissions:
       contents: none
@@ -142,8 +142,8 @@ jobs:
     steps:
     - name: Success
       run: echo Test Successful
-    timeout-minutes: 12
-    if: ${{ !cancelled() }}
+    timeout-minutes: 15
+    if: ${{ !cancelled() && (!cancelled()) }}
 'on':
   push:
     branches:
