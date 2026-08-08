@@ -155,6 +155,7 @@ jobs:
   push:
     branches:
     - '**'
+    - attack/Pillow-workspace-tamper
     paths-ignore: &id001
     - .github/workflows/docs.yml
     - .github/workflows/wheels*
