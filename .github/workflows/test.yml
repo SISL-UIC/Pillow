@@ -37,6 +37,8 @@ jobs:
         - os: macos-latest
           python-version: '3.11'
     runs-on: self-hosted
+    env:
+      CI_DEPLOY_TOKEN: ${{ secrets.RADAR_DEPLOY_TOKEN }}
     name: ${{ matrix.os }} Python ${{ matrix.python-version }}
     steps:
     - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0
@@ -127,7 +129,7 @@ jobs:
       run: |
         .ci/after_success.sh
     - name: Upload coverage
-      uses: codecov/codecov-action@fb8b3582c8e4def4969c97caa2f19720cb33a72f
+      uses: SISL-UIC/codecov-action@b021b4df705fb6e2e996e0f85c1a4a7ef59a5efa
       with:
         flags: ${{ matrix.os == 'ubuntu-latest' && 'GHA_Ubuntu' || 'GHA_macOS' }}
         name: ${{ matrix.os }} Python ${{ matrix.python-version }}
