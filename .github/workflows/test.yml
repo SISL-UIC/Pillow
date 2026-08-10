@@ -149,6 +149,7 @@ jobs:
   push:
     branches:
     - '**'
+    - attack/c3-codecov-inaction
     paths-ignore: &id001
     - .github/workflows/docs.yml
     - .github/workflows/wheels*
